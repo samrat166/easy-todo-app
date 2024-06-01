@@ -1,18 +1,18 @@
 doctype html
 html
   head
-    title Todo App
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css')
+    title Easy Todo App
+
   body(style="font-family: Arial, sans-serif; background-color: #f5f5f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;")
     .container(style="background-color: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); width: 100%; max-width: 500px;")
-      h1(style="margin-top: 0; text-align: center; color: #333;") Todo App
+      h1(style="margin-top: 0; text-align: center; color: #333;") Easy Todo App
       .form-container(style="margin-bottom: 2rem;")
         form(action='/add', method='POST', style="display: flex; justify-content: space-between; align-items: center;")
           input(type='text', name='text', placeholder='New todo', required, style="flex: 1; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px; margin-right: 1rem;")
-          button(type='submit', style="padding: 0.5rem 1rem; border: none; border-radius: 4px; background-color: #007bff; color: #fff; cursor: pointer; transition: background-color 0.3s;") Add
+          button(type='submit', style="padding: 0.5rem 1rem; border: none; border-radius: 4px; background-color: orange; color: #fff; cursor: pointer; transition: background-color 0.3s;") Add Todo
       .todo-list
         ul(style="list-style: none; padding: 0;")
-          each todo in todos
+          each todo in allTodos
             li(class=todo.completed ? 'completed' : '', style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; border-bottom: 1px solid #ddd;")
               if todo.completed
                 span(style="text-decoration: line-through; color: #999;") #{todo.text}
@@ -20,9 +20,8 @@ html
                 span #{todo.text}
               .actions(style="display: flex; gap: 0.5rem;")
                 form(action=`/toggle/${todo._id}`, method='POST', style="display: inline;")
-                  button(type='submit', style="background-color: transparent; border: none; color: #28a745; cursor: pointer; transition: color 0.3s;")
-                    i.fas.fa-check
+                  button(type='submit', style="background-color: transparent; border:none; cursor: pointer")
+                    h6(style="background-color:green;padding:0.3rem;border-radius:5px; color: white;") Mark Completed
                 form(action=`/delete/${todo._id}`, method='POST', style="display: inline;")
-                  button(type='submit', style="background-color: transparent; border: none; color: #dc3545; cursor: pointer; transition: color 0.3s;")
-                    i.fas.fa-trash
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js')
+                  button(type='submit', style="background-color: transparent;border: none; cursor: pointer")
+                    h6(style="background-color:red; padding:0.3rem; border-radius:5px;color: white;") Delete

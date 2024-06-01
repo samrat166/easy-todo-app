@@ -6,27 +6,24 @@ const Todo = require('./model/todoModel');
 
 const app = express();
 
-// Connect to MongoDB
-mongoose.connect('mongodb+srv://amanmongodb123:amanmongodb123@cluster0.raequ.mongodb.net/NihareekaCollege?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => console.log('MongoDB connected'))
-  .catch(err => console.log(err));
-
-// Middleware to parse URL-encoded bodies
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Set 'views' directory for any views 
-app.set('views', path.join(__dirname, 'views'));
+// MongoDB
+mongoose.connect('mongodb+srv://amanmongodb123:amanmongodb123@cluster0.raequ.mongodb.net/NihareekaCollege?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => console.log('MongoDB connected Succesfully'))
+  .catch(err => console.log(err));
 
-// Set view engine as Pug
+
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 // Routes
 app.get('/', async (req, res) => {
-  const todos = await Todo.find();
-  res.render('index', { todos });
+  const allTodos = await Todo.find();
+  res.render('index', { allTodos });
 });
 
 app.post('/add', async (req, res) => {
