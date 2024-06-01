@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB
-mongoose.connect('mongodb+srv://amanmongodb123:amanmongodb123@cluster0.raequ.mongodb.net/NihareekaCollege?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://21825420_karuna:Nepal99%23@cluster0.fdzaxn6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => console.log('MongoDB connected Succesfully'))
